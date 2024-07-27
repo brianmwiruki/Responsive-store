@@ -15,7 +15,7 @@ if(navClose) {
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-menu');
     });
-}
+} 
 
 /*========== REMOVE MENU MOBILE ========*/
 const navLink = document.querySelectorAll('.nav__link');
@@ -35,8 +35,33 @@ window.addEventListener('scroll', () => {
 
 
 /*========== SWIPER =========*/
+const swiperHome = new Swiper('.home__swiper',{
+    speed: 1200, 
+    effect: 'fade', 
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: (index, classsName) => {
+            return '<span class="' + classsName + '">' + String(index + 1).padStart(2, '0') + '</span>';
+        },
+    },
+});
 
 
 /*========== GSAP ANIMATION =========*/
 
+gsap.from('.home__panel-1', {y: -1000, duration: 2})
+gsap.from('.home__panel-2', {y: 1000, duration: 2})
+gsap.from('.home__image', {x: 1000, duration: 2})
+gsap.from('.home__titles', {y: 100, opacity: 0, delay: 2})
+gsap.from('.home__title', {y: 100, opacity: 0, delay: 2.1})
+
+
 /*========== ADD BLUR HEADER ==========*/
+
+const scrollHeader = () => {
+    const header = document.getElementById('header');
+    this.scrollY >= 50 ? header.classList.add('blur-header')
+                       : header.classList.remove('blur-header');
+}
+window.addEventListener('scroll', blurHeader);
